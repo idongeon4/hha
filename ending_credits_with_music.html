@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>엔딩 크레딧</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+            font-family: Arial;
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        #startBtn {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            color: white;
+            font-family: Arial;
+        }
+        
+        #startBtn::before {
+            content: "👆";
+            filter: grayscale(1) brightness(10);
+        }
+        
+        #credits {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            top: 100vh;
+        }
+        
+        .credit {
+            margin: 200px 0;
+            font-size: 60px;
+            font-weight: bold;
+        }
+        
+        .lang {
+            font-size: 30px;
+            color: #888;
+            margin-top: 20px;
+        }
+        
+        .final {
+            font-size: 80px;
+            margin: 300px 0;
+        }
+    </style>
+</head>
+<body>
+
+<button id="startBtn"></button>
+
+<audio id="music" loop preload="auto">
+    <source src="https://files.catbox.moe/c1vs6j.mp3" type="audio/mpeg">
+</audio>
+
+<div id="credits">
+    <div class="credit">당신은 천재입니다<div class="lang">Korean</div></div>
+    <div class="credit">You are a genius<div class="lang">English</div></div>
+    <div class="credit">あなたは天才です<div class="lang">Japanese</div></div>
+    <div class="credit">你是天才<div class="lang">Chinese</div></div>
+    <div class="credit">Eres un genio<div class="lang">Spanish</div></div>
+    <div class="credit">Tu es un génie<div class="lang">French</div></div>
+    <div class="credit">Du bist ein Genie<div class="lang">German</div></div>
+    <div class="credit">Ты гений<div class="lang">Russian</div></div>
+    <div class="credit">Sei un genio<div class="lang">Italian</div></div>
+    <div class="credit">Você é um gênio<div class="lang">Portuguese</div></div>
+    <div class="credit">आप एक प्रतिभाशाली हैं<div class="lang">Hindi</div></div>
+    <div class="credit">أنت عبقري<div class="lang">Arabic</div></div>
+    <div class="credit">คุณเป็นอัจฉริยะ<div class="lang">Thai</div></div>
+    <div class="credit">Bạn là thiên tài<div class="lang">Vietnamese</div></div>
+    <div class="credit">Je bent een genie<div class="lang">Dutch</div></div>
+    <div class="credit">Du är ett geni<div class="lang">Swedish</div></div>
+    <div class="credit">Du er et geni<div class="lang">Norwegian</div></div>
+    <div class="credit">Olet nero<div class="lang">Finnish</div></div>
+    <div class="credit">Είσαι ιδιοφυΐα<div class="lang">Greek</div></div>
+    <div class="credit">Sen bir dahisin<div class="lang">Turkish</div></div>
+    <div class="credit final">유포리아 제작<div class="lang">EUPHORIA PRODUCTION</div></div>
+</div>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+const music = document.getElementById('music');
+const credits = document.getElementById('credits');
+
+startBtn.onclick = function() {
+    // 버튼 숨기기
+    startBtn.style.display = 'none';
+    
+    // 음악 시작
+    music.volume = 0.7;
+    music.play();
+    
+    // 크레딧 스크롤 시작
+    let pos = window.innerHeight;
+    const speed = 0.5; // 스크롤 속도
+    
+    function animate() {
+        pos -= speed;
+        credits.style.top = pos + 'px';
+        
+        if (pos > -credits.offsetHeight - 1000) {
+            requestAnimationFrame(animate);
+        }
+    }
+    
+    animate();
+    
+    // 2분 20초 후 동영상으로 이동
+    setTimeout(function() {
+        window.location.href = 'https://files.catbox.moe/39fm54.mp4';
+    }, 140000);
+};
+</script>
+
+</body>
+</html>
